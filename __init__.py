@@ -9,11 +9,17 @@ class AutoBooking(MycroftSkill):
 
     @intent_file_handler('booking.auto.intent')
     def handle_booking_auto(self, message):
+        self.speak_dialog("init camera")
         camera = PiCamera()
+        self.speak_dialog("starting preview")
         camera.start_preview()
-        sleep(3)
-        camera.capture('/home/pi/ISAPM/temp/image.jpg')
+        self.speak_dialog("wait for 5 seconds")
+        sleep(5)
+        path = '/home/pi/ISAPM/temp/image.jpg'
+        self.speak_dialog("taking photo capture")
+        camera.capture(path)
         camera.stop_preview()
+        self.speak_dialog("taking photo succeeded!")
         bookingDate = self.get_response('Which date you want to booking')
         self.speak_dialog(bookingDate)
 
