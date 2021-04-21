@@ -9,6 +9,7 @@ class AutoBooking(MycroftSkill):
 
     @intent_file_handler('booking.auto.intent')
     def handle_booking_auto(self, message):
+        // Lijian part start
         self.speak_dialog("init camera")
         camera = PiCamera()
         self.speak_dialog("starting preview")
@@ -20,8 +21,15 @@ class AutoBooking(MycroftSkill):
         camera.capture(path)
         camera.stop_preview()
         self.speak_dialog("taking photo succeeded!")
+        // Lijian part end
+        
+        // Li Sheng part start
         bookingDate = self.get_response('Which date you want to booking')
         self.speak_dialog(bookingDate)
+        // Li Sheng part end
+        
+        // Yan Bo part start
+        // Yan Bo part end
 
 def create_skill():
     return AutoBooking()
