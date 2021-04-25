@@ -1,11 +1,12 @@
 from mycroft import MycroftSkill, intent_file_handler
-## from picamera import PiCamera
-## from time import sleep
+# from picamera import PiCamera
+# from time import sleep
 
 
 class AutoBooking(MycroftSkill):
     def __init__(self):
         MycroftSkill.__init__(self)
+        self.log.info("In init!")
 
     @intent_file_handler('booking.auto.intent')
     def handle_booking_auto(self, message):
