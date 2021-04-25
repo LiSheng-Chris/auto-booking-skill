@@ -16,6 +16,7 @@ class AutoBooking(MycroftSkill):
         ## Lijian part start
         # self.speak_dialog("init camera")
 #         camera = picamera.PiCamera()
+        self.log.info("booking started!")
         self.speak_dialog("starting preview")
         self.camera.start_preview()
         self.speak_dialog("wait for 5 seconds")
