@@ -1,6 +1,6 @@
 from mycroft import MycroftSkill, intent_file_handler
-from picamera import PiCamera
-from time import sleep
+# from picamera import PiCamera
+# from time import sleep
 
 
 class AutoBooking(MycroftSkill):
