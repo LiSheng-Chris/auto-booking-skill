@@ -1,4 +1,6 @@
 from mycroft import MycroftSkill, intent_file_handler
+import time
+import picamera
 ## from picamera import PiCamera
 ## from time import sleep
 
