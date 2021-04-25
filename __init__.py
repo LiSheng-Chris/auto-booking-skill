@@ -25,6 +25,7 @@ class AutoBooking(MycroftSkill):
         ## Lijian part end
         
         ## Li Sheng part start
+        self.log.info("Main method started！")
         name = self.get_response("What is you name")
         self.speak_dialog("Hi " + name)
         nric = self.get_response("What is you NRIC number")
