@@ -40,6 +40,8 @@ class AutoBooking(MycroftSkill):
         self.speak_dialog("The type of facility you choose is " + facility)
         bookingDate = self.get_response("Which date you want to booking")
         self.speak_dialog("Your booking date is " + bookingDate)
+        bookingTime = self.get_response("What time do you prefer")
+        self.speak_dialog("Your booking time is " + bookingTime)
         self.log.info("firstName:" + firstName + ",lastName:" + lastName + ", contactNumber:" + contactNumber + ", email:" + email + ", dob:" + dob + ", facility:" + facility + ", bookingDate:" + bookingDate)
 
         url = 'http://8d9fb6d6e740.ngrok.io/bookingsystem'
@@ -52,7 +54,8 @@ class AutoBooking(MycroftSkill):
           "DOB": dob,
           "Medical_Description" : "",
           "Treatment_Facility" : facility,
-          "Date_Booking": bookingDate,
+          "Booking_Timing": bookingTime,
+          "Booking_Date": bookingDate,
           "Sore_Throat": "true",
           "Fever": "false"
         }
