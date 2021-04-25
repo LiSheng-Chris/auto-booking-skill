@@ -42,7 +42,7 @@ class AutoBooking(MycroftSkill):
         self.speak_dialog("Your booking date is " + bookingDate)
         self.log.info("firstName:" + firstName + ",lastName:" + lastName + ", contactNumber:" + contactNumber + ", email:" + email + ", dob:" + dob + ", facility:" + facility + ", bookingDate:" + bookingDate)
 
-        url = 'https://google.com'
+        url = 'http://8d9fb6d6e740.ngrok.io/bookingsystem'
         myobj = {
           "First_Name": firstName,
           "Last_Name": lastName,
