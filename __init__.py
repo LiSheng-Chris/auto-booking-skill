@@ -3,7 +3,7 @@ from mycroft import MycroftSkill, intent_file_handler
 # import picamera
 ## from picamera import PiCamera
 ## from time import sleep
-import tagui as t
+# import tagui as t
 
 
 class AutoBooking(MycroftSkill):
@@ -15,11 +15,11 @@ class AutoBooking(MycroftSkill):
     @intent_file_handler('booking.auto.intent')
     def handle_booking_auto(self, message):
 
-        t.init()
-        t.url('https://www.google.com')
-        t.type('//input[@name="q"]', 'google weather singapore[enter]')
-        temp = t.read('wob_tm')
-        self.log.info("temp = " + temp)
+#         t.init()
+#         t.url('https://www.google.com')
+#         t.type('//input[@name="q"]', 'google weather singapore[enter]')
+#         temp = t.read('wob_tm')
+#         self.log.info("temp = " + temp)
 
         ## Lijian part start
         # self.speak_dialog("init camera")
