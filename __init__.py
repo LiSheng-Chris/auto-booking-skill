@@ -8,9 +8,9 @@ from mycroft import MycroftSkill, intent_file_handler
 
 class AutoBooking(MycroftSkill):
     def __init__(self):
+        self.speak_dialog("Starting Mycroft skill auto booking!")
         MycroftSkill.__init__(self)
-#         self.camera = picamera.PiCamera() 
-#         self.camera.resolution = (2592,1944)
+
     
     @intent_file_handler('booking.auto.intent')
     def handle_booking_auto(self, message):
