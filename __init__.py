@@ -53,8 +53,8 @@ class AutoBooking(MycroftSkill):
           "Medical_Description" : "",
           "Treatment_Facility" : facility,
           "Date_Booking": bookingDate,
-          "Sore_Throat": True,
-          "Fever": False
+          "Sore_Throat": "true",
+          "Fever": "false"
         }
 
         res = requests.post(url, json = myobj)
