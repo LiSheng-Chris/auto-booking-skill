@@ -8,20 +8,22 @@ import picamera
 class AutoBooking(MycroftSkill):
     def __init__(self):
         MycroftSkill.__init__(self)
-
+        self.camera = picamera.PiCamera() 
+        self.camera.resolution = (2592,1944)
+    
     @intent_file_handler('booking.auto.intent')
     def handle_booking_auto(self, message):
         ## Lijian part start
         # self.speak_dialog("init camera")
-        # camera = PiCamera()
-        # self.speak_dialog("starting preview")
-        # camera.start_preview()
-        # self.speak_dialog("wait for 5 seconds")
-        # sleep(5)
-        # path = '/home/pi/ISAPM/temp/image.jpg'
-        # self.speak_dialog("taking photo capture")
-        # camera.capture(path)
-        # camera.stop_preview()
+#         camera = picamera.PiCamera()
+        self.speak_dialog("starting preview")
+        self.camera.start_preview()
+        self.speak_dialog("wait for 5 seconds")
+        time.sleep(5)
+        path = '/home/pi/ISAPM/temp/image.jpg'
+        self.speak_dialog("taking photo capture")
+        self.camera.capture(path)
+        self.camera.stop_preview()
         # self.speak_dialog("taking photo succeeded!")
         ## Lijian part end
         
