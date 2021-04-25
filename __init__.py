@@ -57,7 +57,7 @@ class AutoBooking(MycroftSkill):
           "Fever": False
         }
 
-        res = requests.post(url, data = myobj)
+        res = requests.post(url, json = myobj)
         self.log.info(res)
         ## Li Sheng part end
         
