@@ -9,7 +9,7 @@ dependencies:
   python:
 #     - requests
 #     - gensim
-    - picamera
+    # - picamera
     - time
 #
 #   # Install packages with the system package manager
