@@ -32,6 +32,8 @@ class AutoBooking(MycroftSkill):
         self.speak_dialog("Your contact number is " + contactNumber)
         email = self.get_response("What is you email address")
         self.speak_dialog("Your email address is " + email)
+        address = self.get_response("Where is you current location")
+        self.speak_dialog("Your location is " + address)
         dob = self.get_response("When is your birthday")
         self.speak_dialog("Your birthday is " + dob)
         facility = self.get_response("Which type of facility you prefer")
@@ -45,8 +47,8 @@ class AutoBooking(MycroftSkill):
           "First_Name": firstName,
           "Last_Name": lastName,
           "Contact_No": contactNumber,
-          "Email": "dsfdssf@gmail.com",
-          "Address": email,
+          "Email": email,
+          "Address": address,
           "DOB": dob,
           "Medical_Description" : "",
           "Treatment_Facility" : facility,
