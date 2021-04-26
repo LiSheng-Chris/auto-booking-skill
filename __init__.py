@@ -1,5 +1,5 @@
 from mycroft import MycroftSkill, intent_file_handler
-from picamera import PiCamera
+# from picamera import PiCamera
 # from time import sleep
 import requests
 
@@ -25,6 +25,8 @@ class AutoBooking(MycroftSkill):
         ## Lijian part end
         
         ## Li Sheng part start
+        self.gui.show_image("https://placeimg.com/500/300/nature")
+
         firstName = self.get_response("What is you first name")
         lastName = self.get_response("What is you last name")
         self.speak_dialog("Hi " + firstName + " " + lastName)
