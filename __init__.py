@@ -2,7 +2,7 @@ from mycroft import MycroftSkill, intent_file_handler
 # from picamera import PiCamera
 # from time import sleep
 import requests
-
+import json
 
 class AutoBooking(MycroftSkill):
     def __init__(self):
@@ -26,7 +26,7 @@ class AutoBooking(MycroftSkill):
         
         ## Li Sheng part start
         self.speak_dialog("Hi, prepare to show image.")
-        self.gui.show_image(url="https://placeimg.com/500/300/nature")
+        self.gui.show_image(self, "https://placeimg.com/500/300/nature")
         self.speak_dialog("Hi, show image is finished!")
         firstName = self.get_response("What is you first name")
         lastName = self.get_response("What is you last name")
@@ -69,6 +69,10 @@ class AutoBooking(MycroftSkill):
         
         ## Yan Bo part start
         ## Yan Bo part end
+
+    def toJson(self):
+        return json.dumps(self, default=lambda o: o.__dict__, sort_keys=True, indent=4)
+        # return json.dumps(self, default=lambda o: o.__dict__)
 
 def create_skill():
     return AutoBooking()
