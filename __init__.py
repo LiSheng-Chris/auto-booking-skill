@@ -29,8 +29,8 @@ class AutoBooking(MycroftSkill):
         
         ## Li Sheng part start
         self.speak_dialog("Hi, prepare to show image.")
-        self.gui.show_text(self.toJSON(self), "gui.show_text testing")
-        self.gui.show_image(self.toJSON(self), "https://placeimg.com/500/300/nature")
+        self.gui.show_text(self.toJSON(), "gui.show_text testing")
+        self.gui.show_image(self.toJSON(), "https://placeimg.com/500/300/nature")
         self.speak_dialog("Hi, show image is finished!")
         firstName = self.get_response("What is you first name")
         lastName = self.get_response("What is you last name")
