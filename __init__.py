@@ -28,7 +28,7 @@ class AutoBooking(MycroftSkill):
         ## Lijian part end
         
         ## Li Sheng part start
-        self.speak_dialog("Hi, prepare to show image.")
+        self.speak_dialog("Hi, prepare to show new image.")
         self.gui.clear()
         self.enclosure.display_manager.remove_active()
         self.gui.show_image("https://source.unsplash.com/1920x1080/?+random", "Example Long Caption That Needs Wrapping Very Long Long Text Text Example That Is", "Example Title", fill='PreserveAspectFit', override_idle=10)
