@@ -29,7 +29,10 @@ class AutoBooking(MycroftSkill):
         
         ## Li Sheng part start
         self.speak_dialog("Hi, prepare to show image.")
-        self.gui.show_text("gui.show_text testing")
+        self.gui.clear()
+        self.enclosure.display_manager.remove_active()
+        self.gui.show_image("https://source.unsplash.com/1920x1080/?+random", "Example Long Caption That Needs Wrapping Very Long Long Text Text Example That Is", "Example Title")
+        # self.gui.show_text('gui.show_text testing')
         # self.gui.show_image("https://placeimg.com/500/300/nature")
         self.speak_dialog("Hi, show image is finished!")
         firstName = self.get_response("What is you first name")
