@@ -28,15 +28,15 @@ class AutoBooking(MycroftSkill):
         ## Lijian part end
         
         ## Li Sheng part start
-        self.speak_dialog("Hi, prepare to show old image.")
-        self.gui.clear()
-        self.enclosure.display_manager.remove_active()
-        self.gui.show_image("https://source.unsplash.com/1920x1080/?+random", "Example Long Caption That Needs Wrapping Very Long Long Text Text Example That Is", "Example Title", "PreserveAspectFit", 10)
+        # self.speak_dialog("Hi, prepare to show old image.")
+        # self.gui.clear()
+        # self.enclosure.display_manager.remove_active()
+        # self.gui.show_image("https://source.unsplash.com/1920x1080/?+random", "Example Long Caption That Needs Wrapping Very Long Long Text Text Example That Is", "Example Title", "PreserveAspectFit", 10)
         # self.gui.show_text('gui.show_text testing')
         # self.gui.show_image("https://placeimg.com/500/300/nature")
-        self.speak_dialog("Hi, show image is finished!")
+        # self.speak_dialog("Hi, show image is finished!")
 
-        while True
+        while True:
             firstName = self.get_response("What is you first name")
             lastName = self.get_response("What is you last name")
             firstNameTrim = firstName.replace(" ", "")
@@ -51,7 +51,7 @@ class AutoBooking(MycroftSkill):
             else:
                 break
 
-        while True
+        while True:
             contactNumber = self.get_response("What is you contact number")
             contactNumberTrim = contactNumber.replace(" ", "")
             confirm = self.get_response("Please confirm your contact number is " + contactNumberTrim)
@@ -64,7 +64,7 @@ class AutoBooking(MycroftSkill):
             else:
                 break
         
-        while True
+        while True:
             email = self.get_response("What is you email address")
             emailList = email.split(" ")
             newEmailList = ["\@" if e == "at" else e for e in emailList]
@@ -79,7 +79,7 @@ class AutoBooking(MycroftSkill):
             else:
                 break
 
-        while True
+        while True:
             address = self.get_response("What is you current address")
             confirm = self.get_response("Please confirm your address is " + address)
             confirmLower = confirm.lower()
@@ -91,7 +91,7 @@ class AutoBooking(MycroftSkill):
             else:
                 break
 
-        while True
+        while True:
             dob = self.get_response("When is your birthday")
             confirm = self.get_response("Please confirm your birthday is " + address)
             confirmLower = confirm.lower()
@@ -103,7 +103,7 @@ class AutoBooking(MycroftSkill):
             else:
                 break
 
-        while True
+        while True:
             facility = self.get_response("Which type of facility you prefer")
             confirm = self.get_response("Please confirm the type of facility you choose is " + facility)
             confirmLower = confirm.lower()
@@ -115,7 +115,7 @@ class AutoBooking(MycroftSkill):
             else:
                 break
 
-        while True
+        while True:
             bookingDate = self.get_response("Which date you want to booking")
             confirm = self.get_response("Please confirm your booking date is " + bookingDate)
             confirmLower = confirm.lower()
@@ -127,7 +127,7 @@ class AutoBooking(MycroftSkill):
             else:
                 break
 
-        while True
+        while True:
             bookingTime = self.get_response("What time do you prefer")
             confirm = self.get_response("Please confirm your booking time is " + bookingTime)
             confirmLower = confirm.lower()
