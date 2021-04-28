@@ -35,23 +35,127 @@ class AutoBooking(MycroftSkill):
         # self.gui.show_text('gui.show_text testing')
         # self.gui.show_image("https://placeimg.com/500/300/nature")
         self.speak_dialog("Hi, show image is finished!")
-        firstName = self.get_response("What is you first name")
-        lastName = self.get_response("What is you last name")
-        self.speak_dialog("Hi " + firstName + " " + lastName)
-        contactNumber = self.get_response("What is you contact number")
-        self.speak_dialog("Your contact number is " + contactNumber)
-        email = self.get_response("What is you email address")
-        self.speak_dialog("Your email address is " + email)
-        address = self.get_response("Where is you current location")
-        self.speak_dialog("Your location is " + address)
-        dob = self.get_response("When is your birthday")
-        self.speak_dialog("Your birthday is " + dob)
-        facility = self.get_response("Which type of facility you prefer")
-        self.speak_dialog("The type of facility you choose is " + facility)
-        bookingDate = self.get_response("Which date you want to booking")
-        self.speak_dialog("Your booking date is " + bookingDate)
-        bookingTime = self.get_response("What time do you prefer")
-        self.speak_dialog("Your booking time is " + bookingTime)
+
+        while True
+            firstName = self.get_response("What is you first name")
+            lastName = self.get_response("What is you last name")
+            firstNameTrim = firstName.replace(" ", "")
+            lastNameTrim = lastName.replace(" ", "")
+            confirm = self.get_response("Please confirm your name is " + firstNameTrim + " " + lastNameTrim)
+            confirmLower = confirm.lower()
+
+            if "stop" in confirmLower:
+                return
+            elif "no" in confirmLower or "incorrect" in confirmLower or "wrong" in confirmLower:
+                continue
+            else:
+                break
+
+        while True
+            contactNumber = self.get_response("What is you contact number")
+            contactNumberTrim = contactNumber.replace(" ", "")
+            confirm = self.get_response("Please confirm your contact number is " + contactNumberTrim)
+            confirmLower = confirm.lower()
+
+            if "stop" in confirmLower:
+                return
+            elif "no" in confirmLower or "incorrect" in confirmLower or "wrong" in confirmLower:
+                continue
+            else:
+                break
+        
+        while True
+            email = self.get_response("What is you email address")
+            emailList = email.split(" ")
+            newEmailList = ["\@" if e == "at" else e for e in emailList]
+            emailTrim = ''.join(newEmailList)
+            confirm = self.get_response("Please confirm your email address is " + emailTrim)
+            confirmLower = confirm.lower()
+
+            if "stop" in confirmLower:
+                return
+            elif "no" in confirmLower or "incorrect" in confirmLower or "wrong" in confirmLower:
+                continue
+            else:
+                break
+
+        while True
+            address = self.get_response("What is you current address")
+            confirm = self.get_response("Please confirm your address is " + address)
+            confirmLower = confirm.lower()
+
+            if "stop" in confirmLower:
+                return
+            elif "no" in confirmLower or "incorrect" in confirmLower or "wrong" in confirmLower:
+                continue
+            else:
+                break
+
+        while True
+            dob = self.get_response("When is your birthday")
+            confirm = self.get_response("Please confirm your birthday is " + address)
+            confirmLower = confirm.lower()
+
+            if "stop" in confirmLower:
+                return
+            elif "no" in confirmLower or "incorrect" in confirmLower or "wrong" in confirmLower:
+                continue
+            else:
+                break
+
+        while True
+            facility = self.get_response("Which type of facility you prefer")
+            confirm = self.get_response("Please confirm the type of facility you choose is " + facility)
+            confirmLower = confirm.lower()
+
+            if "stop" in confirmLower:
+                return
+            elif "no" in confirmLower or "incorrect" in confirmLower or "wrong" in confirmLower:
+                continue
+            else:
+                break
+
+        while True
+            bookingDate = self.get_response("Which date you want to booking")
+            confirm = self.get_response("Please confirm your booking date is " + bookingDate)
+            confirmLower = confirm.lower()
+
+            if "stop" in confirmLower:
+                return
+            elif "no" in confirmLower or "incorrect" in confirmLower or "wrong" in confirmLower:
+                continue
+            else:
+                break
+
+        while True
+            bookingTime = self.get_response("What time do you prefer")
+            confirm = self.get_response("Please confirm your booking time is " + bookingTime)
+            confirmLower = confirm.lower()
+
+            if "stop" in confirmLower:
+                return
+            elif "no" in confirmLower or "incorrect" in confirmLower or "wrong" in confirmLower:
+                continue
+            else:
+                break
+
+        # firstName = self.get_response("What is you first name")
+        # lastName = self.get_response("What is you last name")
+        # self.speak_dialog("Hi " + firstName + " " + lastName)
+        # contactNumber = self.get_response("What is you contact number")
+        # self.speak_dialog("Your contact number is " + contactNumber)
+        # email = self.get_response("What is you email address")
+        # self.speak_dialog("Your email address is " + email)
+        # address = self.get_response("Where is you current location")
+        # self.speak_dialog("Your location is " + address)
+        # dob = self.get_response("When is your birthday")
+        # self.speak_dialog("Your birthday is " + dob)
+        # facility = self.get_response("Which type of facility you prefer")
+        # self.speak_dialog("The type of facility you choose is " + facility)
+        # bookingDate = self.get_response("Which date you want to booking")
+        # self.speak_dialog("Your booking date is " + bookingDate)
+        # bookingTime = self.get_response("What time do you prefer")
+        # self.speak_dialog("Your booking time is " + bookingTime)
         self.log.info("firstName:" + firstName + ",lastName:" + lastName + ", contactNumber:" + contactNumber + ", email:" + email + ", dob:" + dob + ", facility:" + facility + ", bookingDate:" + bookingDate)
 
         url = 'http://8d9fb6d6e740.ngrok.io/bookingsystem'
