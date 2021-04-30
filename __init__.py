@@ -28,7 +28,7 @@ class AutoBooking(MycroftSkill):
         ## Lijian part end
         
         ## Li Sheng part start
-        # self.speak_dialog("Hi, prepare to show old image.")
+        # self.speak_dialog("Hi, prepare to show new image.")
         # self.gui.clear()
         # self.enclosure.display_manager.remove_active()
         # self.gui.show_image("https://source.unsplash.com/1920x1080/?+random", "Example Long Caption That Needs Wrapping Very Long Long Text Text Example That Is", "Example Title", "PreserveAspectFit", 10)
@@ -38,10 +38,8 @@ class AutoBooking(MycroftSkill):
 
         while True:
             firstName = self.get_response("What is you first name")
-            lastName = self.get_response("What is you last name")
             firstNameTrim = firstName.replace(" ", "")
-            lastNameTrim = lastName.replace(" ", "")
-            confirm = self.get_response("Please confirm your name is " + firstNameTrim + " " + lastNameTrim)
+            confirm = self.get_response("Please confirm your first name is " + firstNameTrim)
             confirmLower = confirm.lower()
 
             if "stop" in confirmLower:
@@ -52,10 +50,26 @@ class AutoBooking(MycroftSkill):
                 break
 
         while True:
-            contactNumber = self.get_response("What is you contact number")
-            contactNumberTrim = contactNumber.replace(" ", "")
-            confirm = self.get_response("Please confirm your contact number is " + contactNumberTrim)
+            lastName = self.get_response("What is you last name")
+            lastNameTrim = lastName.replace(" ", "")
+            confirm = self.get_response("Please confirm your last name is " + lastNameTrim)
             confirmLower = confirm.lower()
+
+            if "stop" in confirmLower:
+                return
+            elif "no" in confirmLower or "incorrect" in confirmLower or "wrong" in confirmLower:
+                continue
+            else:
+                break
+
+        while True:
+            contactNumber = self.get_response("What is you mobile number")
+            contactNumberTrim = contactNumber.replace(" ", "")
+            if (str.isdigit(contactNumberTrim) and len(contactNumberTrim)==8):
+                confirm = self.get_response("Please confirm your contact number is " + contactNumberTrim)
+                confirmLower = confirm.lower()
+            else:
+                continue
 
             if "stop" in confirmLower:
                 return
@@ -67,7 +81,7 @@ class AutoBooking(MycroftSkill):
         while True:
             email = self.get_response("What is you email address")
             emailList = email.split(" ")
-            newEmailList = ["\@" if e == "at" else e for e in emailList]
+            newEmailList = ["@" if e == "at" else e for e in emailList]
             emailTrim = ''.join(newEmailList)
             confirm = self.get_response("Please confirm your email address is " + emailTrim)
             confirmLower = confirm.lower()
@@ -80,8 +94,9 @@ class AutoBooking(MycroftSkill):
                 break
 
         while True:
-            address = self.get_response("What is you current address")
-            confirm = self.get_response("Please confirm your address is " + address)
+            address = self.get_response("What is you current address postal code")
+            addressTrim = contactNumber.replace(" ", "")
+            confirm = self.get_response("Please confirm your address postal code is " + addressTrim)
             confirmLower = confirm.lower()
 
             if "stop" in confirmLower:
@@ -92,8 +107,8 @@ class AutoBooking(MycroftSkill):
                 break
 
         while True:
-            dob = self.get_response("When is your birthday")
-            confirm = self.get_response("Please confirm your birthday is " + address)
+            dob = self.get_response("What is your birthday? YYYY-MM-DD")
+            confirm = self.get_response("Please confirm your birthday is " + dob)
             confirmLower = confirm.lower()
 
             if "stop" in confirmLower:
@@ -104,7 +119,7 @@ class AutoBooking(MycroftSkill):
                 break
 
         while True:
-            facility = self.get_response("Which type of facility you prefer")
+            facility = self.get_response("Which type of facility do you prefer? Hospital or Polyclinic")
             confirm = self.get_response("Please confirm the type of facility you choose is " + facility)
             confirmLower = confirm.lower()
 
@@ -116,7 +131,7 @@ class AutoBooking(MycroftSkill):
                 break
 
         while True:
-            bookingDate = self.get_response("Which date you want to booking")
+            bookingDate = self.get_response("Which date you want to book (YYYY-MM-DD)")
             confirm = self.get_response("Please confirm your booking date is " + bookingDate)
             confirmLower = confirm.lower()
 
@@ -128,7 +143,7 @@ class AutoBooking(MycroftSkill):
                 break
 
         while True:
-            bookingTime = self.get_response("What time do you prefer")
+            bookingTime = self.get_response("What time do you want to book? HH-MM")
             confirm = self.get_response("Please confirm your booking time is " + bookingTime)
             confirmLower = confirm.lower()
 
@@ -160,11 +175,11 @@ class AutoBooking(MycroftSkill):
 
         url = 'http://8d9fb6d6e740.ngrok.io/bookingsystem'
         myobj = {
-          "First_Name": firstName,
-          "Last_Name": lastName,
-          "Contact_No": contactNumber,
-          "Email": email,
-          "Address": address,
+          "First_Name": firstNameTrim,
+          "Last_Name": lastNameTrim,
+          "Contact_No": contactNumberTrim,
+          "Email": emailTrim,
+          "Address": addressTrim,
           "DOB": dob,
           "Medical_Description" : "",
           "Treatment_Facility" : facility,
