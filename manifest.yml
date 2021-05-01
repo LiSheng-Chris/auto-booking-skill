@@ -10,10 +10,10 @@ dependencies:
 #     - requests
 #     - gensim
     - picamera
+    - tensorflow
     - keras
     - opencv-python
     - matplotlib
-    - tensorflow
     # - time
 #
 #   # Install packages with the system package manager
