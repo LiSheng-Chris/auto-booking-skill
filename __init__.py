@@ -3,6 +3,7 @@ from mycroft import MycroftSkill, intent_file_handler
 # from time import sleep
 import requests
 import json
+import webbrowser
 
 class AutoBooking(MycroftSkill):
     def toJSON(self):
@@ -26,6 +27,8 @@ class AutoBooking(MycroftSkill):
         # camera.stop_preview()
         # self.speak_dialog("taking photo succeeded!")
         ## Lijian part end
+        self.log.info("Open browser")
+        webbrowser.open("http://www.python.org")
         
         ## Li Sheng part start
         self.speak_dialog("Hi, prepare to show new image.")
