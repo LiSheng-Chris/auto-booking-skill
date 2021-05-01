@@ -11,7 +11,7 @@ dependencies:
 #     - gensim
     - picamera
     - keras
-    - cv2
+    - opencv
     - matplotlib
     - tensorflow
     # - time
