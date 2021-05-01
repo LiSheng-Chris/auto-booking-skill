@@ -3,7 +3,20 @@ from picamera import PiCamera
 from time import sleep
 import requests
 import json
+import facial_identify
 import webbrowser
+import argparse
+
+
+def get_args():
+    '''模型建立好之后只需要在这里调参
+    '''
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--img", default="temp/0002.jpg", type=str)  # face_image path
+    parser.add_argument("--path", default="lfw-deepfunneled/", type=str)  # images lib path
+    parser.add_argument("--subset", default=True, type=bool)  # subest indicator 500 face folder for subset
+    config = parser.parse_args()
+    return config
 
 class AutoBooking(MycroftSkill):
     def toJSON(self):
@@ -22,13 +35,26 @@ class AutoBooking(MycroftSkill):
         camera.stop_preview()
 
         ## Li Sheng part start
-        self.speak_dialog("Hi, prepare to show new image.")
-        self.gui.clear()
-        self.enclosure.display_manager.remove_active()
-        self.gui.show_image("https://source.unsplash.com/1920x1080/?+random", "Example Long Caption That Needs Wrapping Very Long Long Text Text Example That Is", "Example Title", "PreserveAspectFit", 10)
-        self.gui.show_text('gui.show_text testing')
+        # self.speak_dialog("Hi, prepare to show new image.")
+        # self.gui.clear()
+        # self.enclosure.display_manager.remove_active()
+        # self.gui.show_image("https://source.unsplash.com/1920x1080/?+random", "Example Long Caption That Needs Wrapping Very Long Long Text Text Example That Is", "Example Title", "PreserveAspectFit", 10)
+        # self.gui.show_text('gui.show_text testing')
         # self.gui.show_image("https://placeimg.com/500/300/nature")
         # self.speak_dialog("Hi, show image is finished!")
+
+        cfg = get_args()
+        sim, simImg = identify_face(cfg)
+        print('Similarity is: ' + str(sim) + ' folderPath is: ' + simImg)
+        if sim >= 0.95:
+            dirlist = simImg.split('/')
+            revDirList = reversed(dirlist)
+            name = (list(revDirList))[0].split('_')
+            name.pop()
+            firstName = name[0]
+            lastName = name[1]
+            print('Hello ' + firstName + ' ' + lastName + ' , welcome back!')
+
 
         while True:
             firstName = self.get_response("What is you first name")
