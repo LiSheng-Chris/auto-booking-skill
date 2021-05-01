@@ -1,6 +1,6 @@
 from mycroft import MycroftSkill, intent_file_handler
-# from picamera import PiCamera
-# from time import sleep
+from picamera import PiCamera
+from time import sleep
 import requests
 import json
 import webbrowser
@@ -29,7 +29,13 @@ class AutoBooking(MycroftSkill):
         ## Lijian part end
         self.log.info("Open browser")
         webbrowser.open("http://www.python.org")
-        
+
+        camera = PiCamera()
+        camera.start_preview()
+        sleep(5)
+        camera.capture('/home/pi/ISAPM/temp/image.jpg')
+        camera.stop_preview()
+
         ## Li Sheng part start
         self.speak_dialog("Hi, prepare to show new image.")
         self.gui.clear()
