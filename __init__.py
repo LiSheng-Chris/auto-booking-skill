@@ -3,7 +3,7 @@ from picamera import PiCamera
 from time import sleep
 import requests
 import json
-import facial_identify
+import facial_identify as fi
 import webbrowser
 import argparse
 
@@ -43,8 +43,8 @@ class AutoBooking(MycroftSkill):
         # self.gui.show_image("https://placeimg.com/500/300/nature")
         # self.speak_dialog("Hi, show image is finished!")
 
-        cfg = get_args()
-        sim, simImg = identify_face(cfg)
+        cfg = fi.get_args()
+        sim, simImg = fi.identify_face(cfg)
         print('Similarity is: ' + str(sim) + ' folderPath is: ' + simImg)
         if sim >= 0.95:
             dirlist = simImg.split('/')
@@ -54,6 +54,7 @@ class AutoBooking(MycroftSkill):
             firstName = name[0]
             lastName = name[1]
             print('Hello ' + firstName + ' ' + lastName + ' , welcome back!')
+            self.speak_dialog('Hello ' + firstName + ' ' + lastName + ' , welcome back')
 
 
         while True:

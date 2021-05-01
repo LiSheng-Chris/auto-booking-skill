@@ -27,7 +27,7 @@ def get_args():
     '''模型建立好之后只需要在这里调参
     '''
     parser = argparse.ArgumentParser()
-    parser.add_argument("--img", default="temp/0002.jpg", type=str)  # face_image path
+    parser.add_argument("--img", default="/home/pi/ISAPM/temp/image.jpg", type=str)  # face_image path
     parser.add_argument("--path", default="lfw-deepfunneled/", type=str) # images lib path
     parser.add_argument("--subset", default=True, type=bool )  # subest indicator 500 face folder for subset
     # parser.add_argument("--lr", default=3e-4, type=float)  # critic学习率
