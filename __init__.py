@@ -28,7 +28,7 @@ class AutoBooking(MycroftSkill):
         # self.speak_dialog("taking photo succeeded!")
         ## Lijian part end
         self.log.info("Open browser")
-        webbrowser.open("http://www.python.org")
+        webbrowser.open("https://firebasestorage.googleapis.com/v0/b/e-charger-303306.appspot.com/o/speed-internet-technology-background.jpg?alt=media&token=63244996-e359-48f1-b3b9-0b73f73554f2")
 
         # camera = PiCamera()
         # camera.start_preview()
