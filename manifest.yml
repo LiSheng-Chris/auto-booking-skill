@@ -12,7 +12,7 @@ dependencies:
     - picamera
     - numpy
     - tensorflow
-    - keras
+    - keras 2.2.4
     - opencv-python
     - matplotlib
     # - time
