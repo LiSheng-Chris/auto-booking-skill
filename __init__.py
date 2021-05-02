@@ -506,7 +506,7 @@ class AutoBooking(MycroftSkill):
 
         self.log.info("firstName:" + firstName + ",lastName:" + lastName + ", contactNumber:" + mobileNumber + ", email:" + email + ", dob:" + dob + ", facility:" + facility + ", bookingDate:" + bookingDate)
 
-        url = 'http://8d9fb6d6e740.ngrok.io/bookingsystem'
+        url = 'http://18c24f0c10aa.ngrok.io/bookingsystem'
         myobj = {
           "First_Name": firstNameTrim,
           "Last_Name": lastNameTrim,
@@ -537,6 +537,11 @@ class AutoBooking(MycroftSkill):
 
         res = requests.post(url, json = myobj)
         self.log.info(res)
+
+        if res.result:
+            self.speak_dialog('Your booking is successefully')
+        else:
+            self.speak_dialog('Sorry, your booking is failed')
 
 
 def create_skill():
