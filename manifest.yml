@@ -10,7 +10,7 @@ dependencies:
 #     - requests
 #     - gensim
     - picamera
-    - numpy==1.12.1
+    - numpy
     - tensorflow
     - keras==2.2.4
     - opencv-python
