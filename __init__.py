@@ -4,6 +4,7 @@ from time import sleep
 import requests
 import json
 import webbrowser
+import datetime
 
 import argparse
 import os
@@ -414,9 +415,9 @@ class AutoBooking(MycroftSkill):
         while True:
             mobileNumber = self.get_response("What is you mobile number")
             mobileNumberTrim = mobileNumber.replace(" ", "")
-            mobileNumberTrim = str(mobileNumberTrim)
-            if (str.isdigit(mobileNumberTrim) and len(mobileNumberTrim)==8):
-                confirm = self.get_response("Please confirm your mobile number is " + mobileNumberTrim)
+            strMobileNumberTrim = str(mobileNumberTrim)
+            if (str.isdigit(strMobileNumberTrim) and len(strMobileNumberTrim)==8):
+                confirm = self.get_response("Please confirm your mobile number is " + strMobileNumberTrim)
                 confirmLower = confirm.lower()
             else:
                 continue
@@ -444,9 +445,10 @@ class AutoBooking(MycroftSkill):
                 break
 
         while True:
-            address = self.get_response("What is you current address postal code")
-            addressTrim = address.replace(" ", "")
-            confirm = self.get_response("Please confirm your address postal code is " + addressTrim)
+            postalCode = self.get_response("What is you current address 6-digit postal code?")
+            postalCodeTrim = postalCode.replace(" ", "")
+            strPostalCodeTrim = str(postalCodeTrim)
+            confirm = self.get_response("Please confirm your address postal code is " + strPostalCodeTrim)
             confirmLower = confirm.lower()
 
             if "stop" in confirmLower:
@@ -457,9 +459,14 @@ class AutoBooking(MycroftSkill):
                 break
 
         while True:
-            dob = self.get_response("What is your birthday? YYYY-MM-DD")
-            confirm = self.get_response("Please confirm your birthday is " + dob)
-            confirmLower = confirm.lower()
+            dob = self.get_response("What is your birthday(YYYYMMDD)?")
+            dob = dob.replace(" ", "")
+            strDOB = str(dob)
+            if (str.isdigit(strDOB) and len(strDOB)==8):
+                confirm = self.get_response("Please confirm your birthday is " + strDOB)
+                confirmLower = confirm.lower()
+            else:
+                continue
 
             if "stop" in confirmLower:
                 return
@@ -469,7 +476,7 @@ class AutoBooking(MycroftSkill):
                 break
 
         while True:
-            facility = self.get_response("Which type of facility do you prefer? Hospital or Polyclinic")
+            facility = self.get_response("Which type of facility do you want to book? Hospital or Polyclinic")
             confirm = self.get_response("Please confirm the type of facility you choose is " + facility)
             confirmLower = confirm.lower()
 
@@ -481,9 +488,14 @@ class AutoBooking(MycroftSkill):
                 break
 
         while True:
-            bookingDate = self.get_response("Which date you want to book (YYYY-MM-DD)")
-            confirm = self.get_response("Please confirm your booking date is " + bookingDate)
-            confirmLower = confirm.lower()
+            bookingDate = self.get_response("Which date do you want to book (YYYYMMDD)?")
+            bookingDate = bookingDate.replace(" ", "")
+            strBookingDate = str(bookingDate)
+            if (str.isdigit(strBookingDate) and len(strBookingDate)==8):
+                confirm = self.get_response("Please confirm your booking date is " + strBookingDate)
+                confirmLower = confirm.lower()
+            else:
+                continue
 
             if "stop" in confirmLower:
                 return
@@ -504,20 +516,21 @@ class AutoBooking(MycroftSkill):
             else:
                 break
 
-        self.log.info("firstName:" + firstName + ",lastName:" + lastName + ", contactNumber:" + mobileNumber + ", email:" + email + ", dob:" + dob + ", facility:" + facility + ", bookingDate:" + bookingDate)
+        self.log.info("firstName:" + firstNameTrim + ",lastName:" + lastNameTrim + ", contactNumber:" + strMobileNumberTrim +
+                      ", email:" + emailTrim + ", dob:" + strDOB + ", facility:" + facility + ", bookingDate:" + strBookingDate)
 
         url = 'http://18c24f0c10aa.ngrok.io/bookingsystem'
         myobj = {
           "First_Name": firstNameTrim,
           "Last_Name": lastNameTrim,
-          "Contact_No": mobileNumberTrim,
+          "Contact_No": strMobileNumberTrim,
           "Email": emailTrim,
-          "Address": addressTrim,
-          "DOB": dob,
+          "Address": strPostalCodeTrim,
+          "DOB": strDOB,
           "Medical_Description" : "",
           "Treatment_Facility" : facility,
           "Booking_Timing": bookingTime,
-          "Booking_Date": bookingDate,
+          "Booking_Date": strBookingDate,
           "Sore_Throat": "true",
           "Fever": "false"
         }
