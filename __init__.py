@@ -519,7 +519,7 @@ class AutoBooking(MycroftSkill):
         self.log.info("firstName:" + firstNameTrim + ",lastName:" + lastNameTrim + ", contactNumber:" + mobileNumberTrim +
                       ", email:" + emailTrim + ", dob:" + dobTrim + ", facility:" + facility + ", bookingDate:" + bookingDateTrim)
 
-        url = 'http://18c24f0c10aa.ngrok.io/bookingsystem'
+        url = 'http://6476b39a8f7c.ngrok.io/bookingsystem'
         myobj = {
           "First_Name": firstNameTrim,
           "Last_Name": lastNameTrim,
