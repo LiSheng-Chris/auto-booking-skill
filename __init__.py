@@ -415,7 +415,7 @@ class AutoBooking(MycroftSkill):
         while True:
             mobileNumber = self.get_response("What is you mobile number")
             mobileNumberTrim = mobileNumber.replace(" ", "")
-            mobileNumber = mobileNumberTrim + " "
+            mobileNumber = mobileNumberTrim + "/"
             if (str.isdigit(mobileNumberTrim) and len(mobileNumberTrim)==8):
                 confirm = self.get_response("Please confirm your mobile number is " + mobileNumber)
                 confirmLower = confirm.lower()
@@ -447,7 +447,7 @@ class AutoBooking(MycroftSkill):
         while True:
             postalCode = self.get_response("What is you current address 6-digit postal code?")
             postalCodeTrim = postalCode.replace(" ", "")
-            postalCode = postalCodeTrim + " "
+            postalCode = postalCodeTrim + "/"
             confirm = self.get_response("Please confirm your address postal code is " + postalCode)
             confirmLower = confirm.lower()
 
@@ -461,7 +461,7 @@ class AutoBooking(MycroftSkill):
         while True:
             dob = self.get_response("What is your birthday(YYYYMMDD)?")
             dobTrim = dob.replace(" ", "")
-            dob = dobTrim + " "
+            dob = dobTrim + "/"
             if (str.isdigit(dobTrim) and len(dobTrim)==8):
                 confirm = self.get_response("Please confirm your birthday is " + dob)
                 confirmLower = confirm.lower()
@@ -490,7 +490,7 @@ class AutoBooking(MycroftSkill):
         while True:
             bookingDate = self.get_response("Which date do you want to book (YYYYMMDD)?")
             bookingDateTrim = bookingDate.replace(" ", "")
-            bookingDate = bookingDateTrim + " "
+            bookingDate = bookingDateTrim + "/"
             if (str.isdigit(bookingDateTrim) and len(bookingDateTrim)==8):
                 confirm = self.get_response("Please confirm your booking date is " + bookingDate)
                 confirmLower = confirm.lower()
