@@ -548,7 +548,7 @@ class AutoBooking(MycroftSkill):
         #     except:
         #         continue
 
-        webbrowser.open("https://00f74ba44be7481eeb5652bdd56c70800bdc39ef33-apidata.googleusercontent.com/download/storage/v1/b/e-charger-303306.appspot.com/o/NgYanBo-05-02-21.png?jk=AFshE3V-Iwec1IvSeFWpkukmMaaediHBfX4FCLcWryA7Dz89xwrSie7PotNuhMH4HaebHxUwX8xt9EZlfq6VGw_fkUdA6fcBNoZV07y8JhYdlocjOwNSeGlItwp6z13aLEj7h1K_1J1tIUBkZU9PvMA_fjmE64DMbu_jdx3ENRmKfF_9GeKDw5HC1tJelCpdOMVtxCmkQEC0FdE1sadpleiMR1LfzZ9vE4gBxKYBvy_3O38rs1Ix928VgqC5FgFaghsNA-dfeoKAQH-Trc4VExwzJHRJvDkgyJ-se_X-KM7Vv2reYhwiD3B4shPe_i3TqsaCUEsSBG5E-qdQ1PF8wRlH5mOSQWKquwRd-Ugl_kAOA3kyHR4M7Egc8uEYMPn9VJTBX-qXmZc0Rkkx2gRZc9lbxkJG_GvT8rWaP8NGu2HkwK_yNh5KL8qW8yQpfXn-jkuxh6kRJ2PMnJgp1V1B5tYOcy4wux5lijlZF7wfjS8bGfTHtJE3g8EyKtKPHYA9Qf2ZgbIP0DaPcLfrAekmsMuLlqKCFY-bTEzsqguagalZrUyMkVkkPM6N2kE4eBbrWw2vvpDVZAIaeUESW0jZueg_tCiYSH8nOZ0iL7MYqI1D8fHv9at4J8TizWA65TLLtrtdsQ6zVSgE7eb8GtvAbQPXDAVMIlPf1kL9TOM1Va1nLcxygkRcCRyDWN2-dyNB-ZBtS6d1kM1sOLYZ9IZG4cwmGLw5tMEZZIgOMQYgW82DttAiucmhvZ84ClQM5HP_Ovra3heEXvZPa9YzqhGI850aMiztV3FNjGkU_BZ2lnDGt4JFF2ksVhz4hZcOsHkl4v1O_Avqkvt0nW_Yx8AyixgOn0n6Ka6eIuojhOBi8H4yBVVAhJARUxyhQoQ7X3Xz4bO7n4dUMXT-YxAV7MCTHtTFJOM-zjAa4e_QMx5dydUfToKICnNgA9FWQc6A4306Pt68qMESN-cOAjW1J7NcVsgfHVF3MU5xZvQ&isca=1")
+        webbrowser.open("https://firebasestorage.googleapis.com/v0/b/e-charger-303306.appspot.com/o/NgYanBo-05-02-21.png?alt=media&token=d539f69d-59f3-4cae-b30e-fb582e8d9baa")
         self.speak_dialog('Please scan the qr code to continue')
 
         res = requests.post(url, json = myobj)
