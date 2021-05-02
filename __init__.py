@@ -16,9 +16,9 @@ import os
 # import matplotlib.pyplot as plt
 # import tensorflow as tf
 import random
-from google.cloud import storage
+# from google.cloud import storage
 
-client = storage.Client.from_service_account_json('./static/e-charger-303306-510a928eb8dd.json')
+# client = storage.Client.from_service_account_json('./static/e-charger-303306-510a928eb8dd.json')
 
 def get_args():
     '''模型建立好之后只需要在这里调参
@@ -535,18 +535,18 @@ class AutoBooking(MycroftSkill):
           "Fever": "false"
         }
 
-        while True:
-            try:
-                sleep(5)
-                bucket = client.bucket("e-charger-303306.appspot.com")
-                x = datetime.datetime.now()
-                blob = bucket.blob(firstNameTrim + lastNameTrim + "-" + x.strftime("%m") + "-" + x.strftime("%d") + "-" + x.strftime("%y"))
-                url = blob.generate_signed_url(version="v4", expiration=datetime.timedelta(minutes=15), method="GET")
-                webbrowser.open(url)
-                self.speak_dialog('Please scan the qr code to continue')
-                break
-            except:
-                continue
+        # while True:
+        #     try:
+        #         sleep(5)
+        #         bucket = client.bucket("e-charger-303306.appspot.com")
+        #         x = datetime.datetime.now()
+        #         blob = bucket.blob(firstNameTrim + lastNameTrim + "-" + x.strftime("%m") + "-" + x.strftime("%d") + "-" + x.strftime("%y"))
+        #         url = blob.generate_signed_url(version="v4", expiration=datetime.timedelta(minutes=15), method="GET")
+        #         webbrowser.open(url)
+        #         self.speak_dialog('Please scan the qr code to continue')
+        #         break
+        #     except:
+        #         continue
 
         res = requests.post(url, json = myobj)
         self.log.info(res)
