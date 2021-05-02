@@ -368,6 +368,7 @@ class AutoBooking(MycroftSkill):
         t.init()
         t.url('https://eservices.healthhub.sg/')
         t.wait(6)
+        t.snap('//a[contains(@href, "singpassmobile.sg/qrlogin")]', 'results.png')
         t.close()
 
         camera = PiCamera()
