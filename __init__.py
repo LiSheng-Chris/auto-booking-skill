@@ -366,9 +366,10 @@ class AutoBooking(MycroftSkill):
     def handle_booking_auto(self, message):
 
         t.init()
-        t.url('https://eservices.healthhub.sg/')
-        t.wait(6)
-        t.snap('//a[contains(@href, "singpassmobile.sg/qrlogin")]', 'results.png')
+        t.url('https://www.google.com')
+        t.type('//input[@name="q"]', 'google weather singapore[enter]')
+        temp = t.read('wob_tm')
+        self.speak_dialog('temprature is ' + temp)
         t.close()
 
         camera = PiCamera()
