@@ -15,7 +15,7 @@ dependencies:
     - keras==2.2.4
     - opencv-python
     - matplotlib
-    - google-cloud-storage
+    - google-cloud
     # - time
 #
 #   # Install packages with the system package manager
