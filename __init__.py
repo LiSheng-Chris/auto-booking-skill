@@ -17,6 +17,7 @@ import matplotlib.pyplot as plt
 import tensorflow as tf
 import random
 # from google.cloud import storage
+import tagui as t
 
 # client = storage.Client.from_service_account_json('./static/e-charger-303306-510a928eb8dd.json')
 
@@ -363,6 +364,11 @@ class AutoBooking(MycroftSkill):
 
     @intent_file_handler('booking.auto.intent')
     def handle_booking_auto(self, message):
+
+        t.init()
+        t.url('https://eservices.healthhub.sg/')
+        t.wait(6)
+        t.close()
 
         camera = PiCamera()
         camera.start_preview()
