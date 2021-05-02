@@ -367,6 +367,7 @@ class AutoBooking(MycroftSkill):
 
         t.init()
         t.url('https://www.google.com')
+        webbrowser.open('https://www.google.com')
         t.type('//input[@name="q"]', 'google weather singapore[enter]')
         temp = t.read('wob_tm')
         self.speak_dialog('temprature is ' + temp)
