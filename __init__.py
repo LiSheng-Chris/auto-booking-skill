@@ -16,7 +16,7 @@ import os
 # import matplotlib.pyplot as plt
 # import tensorflow as tf
 import random
-# from google.cloud import storage
+from google.cloud import storage
 
 # client = storage.Client.from_service_account_json('./static/e-charger-303306-510a928eb8dd.json')
 
