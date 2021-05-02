@@ -412,10 +412,11 @@ class AutoBooking(MycroftSkill):
                 break
 
         while True:
-            contactNumber = self.get_response("What is you mobile number")
-            contactNumberTrim = contactNumber.replace(" ", "")
-            if (str.isdigit(contactNumberTrim) and len(contactNumberTrim)==8):
-                confirm = self.get_response("Please confirm your contact number is " + contactNumberTrim)
+            mobileNumber = self.get_response("What is you mobile number")
+            mobileNumberTrim = mobileNumber.replace(" ", "")
+            mobileNumberTrim = str(mobileNumberTrim)
+            if (str.isdigit(mobileNumberTrim) and len(mobileNumberTrim)==8):
+                confirm = self.get_response("Please confirm your mobile number is " + mobileNumberTrim)
                 confirmLower = confirm.lower()
             else:
                 continue
@@ -444,7 +445,7 @@ class AutoBooking(MycroftSkill):
 
         while True:
             address = self.get_response("What is you current address postal code")
-            addressTrim = contactNumber.replace(" ", "")
+            addressTrim = address.replace(" ", "")
             confirm = self.get_response("Please confirm your address postal code is " + addressTrim)
             confirmLower = confirm.lower()
 
@@ -503,13 +504,13 @@ class AutoBooking(MycroftSkill):
             else:
                 break
 
-        self.log.info("firstName:" + firstName + ",lastName:" + lastName + ", contactNumber:" + contactNumber + ", email:" + email + ", dob:" + dob + ", facility:" + facility + ", bookingDate:" + bookingDate)
+        self.log.info("firstName:" + firstName + ",lastName:" + lastName + ", contactNumber:" + mobileNumber + ", email:" + email + ", dob:" + dob + ", facility:" + facility + ", bookingDate:" + bookingDate)
 
         url = 'http://8d9fb6d6e740.ngrok.io/bookingsystem'
         myobj = {
           "First_Name": firstNameTrim,
           "Last_Name": lastNameTrim,
-          "Contact_No": contactNumberTrim,
+          "Contact_No": mobileNumberTrim,
           "Email": emailTrim,
           "Address": addressTrim,
           "DOB": dob,
