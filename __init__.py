@@ -15,6 +15,9 @@ import os
 # import matplotlib.pyplot as plt
 # import tensorflow as tf
 import random
+from google.cloud import storage
+
+client = storage.Client.from_service_account_json('./static/e-charger-303306-510a928eb8dd.json')
 
 def get_args():
     '''模型建立好之后只需要在这里调参
@@ -366,15 +369,6 @@ class AutoBooking(MycroftSkill):
         camera.capture('/home/pi/ISAPM/temp/image.jpg')
         camera.stop_preview()
 
-        ## Li Sheng part start
-        # self.speak_dialog("Hi, prepare to show new image.")
-        # self.gui.clear()
-        # self.enclosure.display_manager.remove_active()
-        # self.gui.show_image("https://source.unsplash.com/1920x1080/?+random", "Example Long Caption That Needs Wrapping Very Long Long Text Text Example That Is", "Example Title", "PreserveAspectFit", 10)
-        # self.gui.show_text('gui.show_text testing')
-        # self.gui.show_image("https://placeimg.com/500/300/nature")
-        # self.speak_dialog("Hi, show image is finished!")
-
         cfg = get_args()
         sim, simImg = identify_face(cfg)
         print('Similarity is: ' + str(sim) + ' folderPath is: ' + simImg)
@@ -390,7 +384,8 @@ class AutoBooking(MycroftSkill):
 
 
         while True:
-            firstName = self.get_response("What is you first name")
+            if not firstName:
+                firstName = self.get_response("What is you first name")
             firstNameTrim = firstName.replace(" ", "")
             confirm = self.get_response("Please confirm your first name is " + firstNameTrim)
             confirmLower = confirm.lower()
@@ -403,7 +398,8 @@ class AutoBooking(MycroftSkill):
                 break
 
         while True:
-            lastName = self.get_response("What is you last name")
+            if not lastName:
+                lastName = self.get_response("What is you last name")
             lastNameTrim = lastName.replace(" ", "")
             confirm = self.get_response("Please confirm your last name is " + lastNameTrim)
             confirmLower = confirm.lower()
@@ -524,6 +520,19 @@ class AutoBooking(MycroftSkill):
           "Sore_Throat": "true",
           "Fever": "false"
         }
+
+        while True:
+            try:
+                sleep(5)
+                bucket = client.bucket("e-charger-303306.appspot.com")
+                x = datetime.datetime.now()
+                blob = bucket.blob(firstNameTrim + lastNameTrim + "-" + x.strftime("%m") + "-" + x.strftime("%d") + "-" + x.strftime("%y"))
+                url = blob.generate_signed_url(version="v4", expiration=datetime.timedelta(minutes=15), method="GET")
+                webbrowser.open(url)
+                self.speak_dialog('Please scan the qr code to continue')
+                break
+            except:
+                continue
 
         res = requests.post(url, json = myobj)
         self.log.info(res)
