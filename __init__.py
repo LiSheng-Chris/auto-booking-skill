@@ -461,7 +461,7 @@ class AutoBooking(MycroftSkill):
         while True:
             dob = self.get_response("What is your birthday(YYYYMMDD)?")
             dobTrim = dob.replace(" ", "")
-            dob = dobTrim + "/"
+            dob = dobTrim + "_"
             if (str.isdigit(dobTrim) and len(dobTrim)==8):
                 confirm = self.get_response("Please confirm your birthday is " + dob)
                 confirmLower = confirm.lower()
