@@ -17,7 +17,10 @@ import matplotlib.pyplot as plt
 import tensorflow as tf
 import random
 # from google.cloud import storage
-import tagui as t
+# import tagui as t
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
 
 # client = storage.Client.from_service_account_json('./static/e-charger-303306-510a928eb8dd.json')
 
@@ -365,13 +368,13 @@ class AutoBooking(MycroftSkill):
     @intent_file_handler('booking.auto.intent')
     def handle_booking_auto(self, message):
 
-        t.init()
-        t.url('https://www.google.com')
-        webbrowser.open('https://www.google.com')
-        t.type('//input[@name="q"]', 'google weather singapore[enter]')
-        temp = t.read('wob_tm')
-        self.speak_dialog('temprature is ' + temp)
-        t.close()
+        # t.init()
+        # t.url('https://www.google.com')
+        # webbrowser.open('https://www.google.com')
+        # t.type('//input[@name="q"]', 'google weather singapore[enter]')
+        # temp = t.read('wob_tm')
+        # self.speak_dialog('temprature is ' + temp)
+        # t.close()
 
         camera = PiCamera()
         camera.start_preview()

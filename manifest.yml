@@ -16,6 +16,7 @@ dependencies:
     - opencv-python
     - matplotlib
     - tagui
+    - firebase-admin
     # - google-cloud-storage==1.24.0
     # - time
 #
