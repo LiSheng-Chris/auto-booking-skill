@@ -376,6 +376,15 @@ class AutoBooking(MycroftSkill):
         # self.speak_dialog('temprature is ' + temp)
         # t.close()
 
+        cred = credentials.Certificate('./static/e-charger-303306-510a928eb8dd.json')
+        firebase_admin.initialize_app(cred)
+        db = firestore.client()
+
+        qrcode_ref = db.collection(u'QRCode').document(u'4OGsFShm0OmuTq8a5c7J')
+        qrcode = qrcode_ref.get()
+
+        self.log.info(qrcode.to_dict())
+
         camera = PiCamera()
         camera.start_preview()
         sleep(5)
