@@ -24,6 +24,10 @@ from firebase_admin import firestore
 
 # client = storage.Client.from_service_account_json('./static/e-charger-303306-510a928eb8dd.json')
 
+cred = credentials.Certificate('./static/e-charger-303306-510a928eb8dd.json')
+firebase_admin.initialize_app(cred)
+db = firestore.client()
+
 def get_args():
     '''模型建立好之后只需要在这里调参
     '''
@@ -375,10 +379,6 @@ class AutoBooking(MycroftSkill):
         # temp = t.read('wob_tm')
         # self.speak_dialog('temprature is ' + temp)
         # t.close()
-
-        cred = credentials.Certificate('./static/e-charger-303306-510a928eb8dd.json')
-        firebase_admin.initialize_app(cred)
-        db = firestore.client()
 
         qrcode_ref = db.collection(u'QRCode').document(u'4OGsFShm0OmuTq8a5c7J')
         qrcode = qrcode_ref.get()
