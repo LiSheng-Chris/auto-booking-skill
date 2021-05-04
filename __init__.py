@@ -298,7 +298,9 @@ def identify_face(cfg):
     #                            validation_data=([test_X1, test_X2], test_Y), verbose=2)
 
     # TODO load the model file
-    model = tf.keras.models.load_model(cfg.model, custom_objects={'contrastive_loss': contrastive_loss, 'accuracy_sim' : accuracy_sim})
+    modelFile = cfg.model
+    print("model file location is: " + modelFile)
+    model = tf.keras.models.load_model(modelFile, custom_objects={'contrastive_loss': contrastive_loss, 'accuracy_sim' : accuracy_sim})
 
     # Load images and resize images
     # import random
