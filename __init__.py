@@ -24,7 +24,7 @@ from firebase_admin import firestore
 
 # client = storage.Client.from_service_account_json('./static/e-charger-303306-510a928eb8dd.json')
 
-cred = credentials.Certificate('~/static/e-charger-303306-510a928eb8dd.json')
+cred = credentials.Certificate('/home/pi/ISAPM/mycroft-core/skills/auto-booking-skill.lisdre/static/e-charger-303306-510a928eb8dd.json')
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 
