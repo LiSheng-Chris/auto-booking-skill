@@ -18,15 +18,15 @@ import tensorflow as tf
 import random
 # from google.cloud import storage
 # import tagui as t
-import firebase_admin
-from firebase_admin import credentials
-from firebase_admin import firestore
+# import firebase_admin
+# from firebase_admin import credentials
+# from firebase_admin import firestore
 
 # client = storage.Client.from_service_account_json('./static/e-charger-303306-510a928eb8dd.json')
 
-cred = credentials.Certificate('/home/pi/ISAPM/mycroft-core/skills/auto-booking-skill.lisdre/static/e-charger-303306-510a928eb8dd.json')
-firebase_admin.initialize_app(cred)
-db = firestore.client()
+# cred = credentials.Certificate('/home/pi/ISAPM/mycroft-core/skills/auto-booking-skill.lisdre/static/e-charger-303306-510a928eb8dd.json')
+# firebase_admin.initialize_app(cred)
+# db = firestore.client()
 
 def get_args():
     '''模型建立好之后只需要在这里调参
@@ -380,10 +380,10 @@ class AutoBooking(MycroftSkill):
         # self.speak_dialog('temprature is ' + temp)
         # t.close()
 
-        qrcode_ref = db.collection(u'QRCode').document(u'4OGsFShm0OmuTq8a5c7J')
-        qrcode = qrcode_ref.get()
+        # qrcode_ref = db.collection(u'QRCode').document(u'4OGsFShm0OmuTq8a5c7J')
+        # qrcode = qrcode_ref.get()
 
-        self.log.info(qrcode.to_dict())
+        # self.log.info(qrcode.to_dict())
 
         camera = PiCamera()
         camera.start_preview()
