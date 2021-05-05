@@ -16,17 +16,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 import tensorflow as tf
 import random
-# from google.cloud import storage
-# import tagui as t
-# import firebase_admin
-# from firebase_admin import credentials
-# from firebase_admin import firestore
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
+import threading
 
-# client = storage.Client.from_service_account_json('./static/e-charger-303306-510a928eb8dd.json')
-
-# cred = credentials.Certificate('/home/pi/ISAPM/mycroft-core/skills/auto-booking-skill.lisdre/static/e-charger-303306-510a928eb8dd.json')
-# firebase_admin.initialize_app(cred)
-# db = firestore.client()
+cred = credentials.Certificate('/home/pi/ISAPM/mycroft-core/skills/auto-booking-skill.lisdre/static/e-charger-303306-510a928eb8dd.json')
+firebase_admin.initialize_app(cred)
+db = firestore.client()
 
 def get_args():
     '''模型建立好之后只需要在这里调参
@@ -375,19 +372,6 @@ class AutoBooking(MycroftSkill):
     @intent_file_handler('booking.auto.intent')
     def handle_booking_auto(self, message):
 
-        # t.init()
-        # t.url('https://www.google.com')
-        # webbrowser.open('https://www.google.com')
-        # t.type('//input[@name="q"]', 'google weather singapore[enter]')
-        # temp = t.read('wob_tm')
-        # self.speak_dialog('temprature is ' + temp)
-        # t.close()
-
-        # qrcode_ref = db.collection(u'QRCode').document(u'4OGsFShm0OmuTq8a5c7J')
-        # qrcode = qrcode_ref.get()
-
-        # self.log.info(qrcode.to_dict())
-
         camera = PiCamera()
         camera.start_preview()
         sleep(5)
@@ -559,21 +543,24 @@ class AutoBooking(MycroftSkill):
           "Fever": "false"
         }
 
-        # while True:
-        #     try:
-        #         sleep(5)
-        #         bucket = client.bucket("e-charger-303306.appspot.com")
-        #         x = datetime.datetime.now()
-        #         blob = bucket.blob(firstNameTrim + lastNameTrim + "-" + x.strftime("%m") + "-" + x.strftime("%d") + "-" + x.strftime("%y"))
-        #         url = blob.generate_signed_url(version="v4", expiration=datetime.timedelta(minutes=15), method="GET")
-        #         webbrowser.open(url)
-        #         self.speak_dialog('Please scan the qr code to continue')
-        #         break
-        #     except:
-        #         continue
+        db.collection(u'User').document(myobj['First_Name'] + myobj['Last_Name']).set(myobj)
 
-        webbrowser.open("https://firebasestorage.googleapis.com/v0/b/e-charger-303306.appspot.com/o/NgYanBo-05-02-21.png?alt=media&token=d539f69d-59f3-4cae-b30e-fb582e8d9baa")
-        self.speak_dialog('Please scan the qr code to continue')
+        callback_done = threading.Event()
+
+        doc_ref = db.collection(u'QRCode').document(u'4OGsFShm0OmuTq8a5c7J')
+
+        # Create a callback on_snapshot function to capture changes
+        def on_snapshot(doc_snapshot, changes, read_time):
+            for doc in doc_snapshot:
+                qrcode_url = doc.to_dict()['qrCodeUrl']
+                if (qrcode_url):
+                    webbrowser.open(qrcode_url)
+                    self.speak_dialog('Please scan the qr code to continue')
+                    doc_ref.set({u'qrCodeUrl': ''})
+            callback_done.set()
+
+        # Watch the document
+        doc_watch = doc_ref.on_snapshot(on_snapshot)
 
         res = requests.post(url, json = myobj)
         self.log.info(res)
