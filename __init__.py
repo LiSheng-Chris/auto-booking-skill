@@ -358,7 +358,7 @@ def identify_face(cfg):
     # plt.imshow(cv2.cvtColor(all_imgs[index3], cv2.COLOR_BGR2RGB) / 255)
     # plt.axis('off')
     # plt.show()
-    similarity = 0.99
+    similarity = 0.90
     folderPath = 'lfw-deepfunneled/A_Lijian_Gu/Lijian_Gu_0001.jpg'
     return similarity, folderPath
 
@@ -390,6 +390,9 @@ class AutoBooking(MycroftSkill):
             lastName = name[1]
             print('Hello ' + firstName + ' ' + lastName + ' , welcome back!')
             self.speak_dialog('Hello ' + firstName + ' ' + lastName + ' , welcome back')
+        else:
+            print('Welcome, this is your first time onboard to our system!')
+            self.speak_dialog('Welcome, this is your first time onboard to our system')
 
 
         while True:
