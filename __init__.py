@@ -527,18 +527,18 @@ class AutoBooking(MycroftSkill):
         # self.log.info("firstName:" + firstNameTrim + ",lastName:" + lastNameTrim + ", contactNumber:" + mobileNumberTrim +
         #               ", email:" + emailTrim + ", dob:" + dobTrim + ", facility:" + facility + ", bookingDate:" + bookingDateTrim)
 
-        url = 'http://d19acc46dcf7.ngrok.io/bookingsystem'
+        url = 'http://75e371147338.ngrok.io/bookingsystem'
         myobj = {
-          "First_Name": 'LiJian', #firstNameTrim,
+          "First_Name": 'Lijian', #firstNameTrim,
           "Last_Name": 'Gu', #lastNameTrim,
           "Contact_No": '91519418', # mobileNumberTrim,
           "Email": 'gulijian@gmail.com', #emailTrim,
           "Address": '119615', #postalCodeTrim,
-          "DOB": '19881111', #dobTrim,
+          "DOB": '11/11/1988', #dobTrim,
           "Medical_Description" : "",
           "Treatment_Facility" : 'hospital',#facility,
-          "Booking_Timing": '1030', #bookingTime,
-          "Booking_Date": '20210521', #bookingDateTrim,
+          "Booking_Timing": '10:30', #bookingTime,
+          "Booking_Date": '21/05/2021', #bookingDateTrim,
           "Sore_Throat": "true",
           "Fever": "false"
         }
