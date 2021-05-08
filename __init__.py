@@ -393,6 +393,8 @@ class AutoBooking(MycroftSkill):
         else:
             print('Welcome, this is your first time onboard to our system!')
             self.speak_dialog('Welcome, this is your first time onboard to our system')
+            firstName=''
+            lastName=''
 
 
         while True:
