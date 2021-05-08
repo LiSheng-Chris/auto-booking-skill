@@ -555,7 +555,7 @@ class AutoBooking(MycroftSkill):
                 qrcode_url = doc.to_dict()['qrCodeUrl']
                 if (qrcode_url):
                     webbrowser.open(qrcode_url)
-                    self.speak_dialog('Please scan the qr code to continue')
+                    self.speak_dialog('Please scan the singpass qr code to continue')
                     doc_ref.set({u'qrCodeUrl': ''})
             callback_done.set()
 
@@ -564,11 +564,6 @@ class AutoBooking(MycroftSkill):
 
         res = requests.post(url, json = myobj)
         self.log.info(res)
-
-        if res.result:
-            self.speak_dialog('Your booking is successefully')
-        else:
-            self.speak_dialog('Sorry, your booking is failed')
 
 
 def create_skill():
