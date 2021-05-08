@@ -536,7 +536,7 @@ class AutoBooking(MycroftSkill):
           "Address": '119615', #postalCodeTrim,
           "DOB": '19881111', #dobTrim,
           "Medical_Description" : "",
-          "Treatment_Facility" : 'Hospital',#facility,
+          "Treatment_Facility" : 'hospital',#facility,
           "Booking_Timing": '1030', #bookingTime,
           "Booking_Date": '20210521', #bookingDateTrim,
           "Sore_Throat": "true",
