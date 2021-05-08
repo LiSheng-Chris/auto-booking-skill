@@ -392,153 +392,153 @@ class AutoBooking(MycroftSkill):
             self.speak_dialog('Hello ' + firstName + ' ' + lastName + ' , welcome back')
 
 
-        while True:
-            if not firstName:
-                firstName = self.get_response("What is you first name")
-            firstNameTrim = firstName.replace(" ", "")
-            confirm = self.get_response("Please confirm your first name is " + firstNameTrim)
-            confirmLower = confirm.lower()
+        # while True:
+        #     if not firstName:
+        #         firstName = self.get_response("What is you first name")
+        #     firstNameTrim = firstName.replace(" ", "")
+        #     confirm = self.get_response("Please confirm your first name is " + firstNameTrim)
+        #     confirmLower = confirm.lower()
 
-            if "stop" in confirmLower:
-                return
-            elif "no" in confirmLower or "incorrect" in confirmLower or "wrong" in confirmLower:
-                continue
-            else:
-                break
+        #     if "stop" in confirmLower:
+        #         return
+        #     elif "no" in confirmLower or "incorrect" in confirmLower or "wrong" in confirmLower:
+        #         continue
+        #     else:
+        #         break
 
-        while True:
-            if not lastName:
-                lastName = self.get_response("What is you last name")
-            lastNameTrim = lastName.replace(" ", "")
-            confirm = self.get_response("Please confirm your last name is " + lastNameTrim)
-            confirmLower = confirm.lower()
+        # while True:
+        #     if not lastName:
+        #         lastName = self.get_response("What is you last name")
+        #     lastNameTrim = lastName.replace(" ", "")
+        #     confirm = self.get_response("Please confirm your last name is " + lastNameTrim)
+        #     confirmLower = confirm.lower()
 
-            if "stop" in confirmLower:
-                return
-            elif "no" in confirmLower or "incorrect" in confirmLower or "wrong" in confirmLower:
-                continue
-            else:
-                break
+        #     if "stop" in confirmLower:
+        #         return
+        #     elif "no" in confirmLower or "incorrect" in confirmLower or "wrong" in confirmLower:
+        #         continue
+        #     else:
+        #         break
 
-        while True:
-            mobileNumber = self.get_response("What is you mobile number")
-            mobileNumberTrim = mobileNumber.replace(" ", "")
-            mobileNumber = mobileNumberTrim
-            if (str.isdigit(mobileNumberTrim) and len(mobileNumberTrim)==8):
-                confirm = self.get_response("Please confirm your mobile number is " + mobileNumber)
-                confirmLower = confirm.lower()
-            else:
-                continue
+        # while True:
+        #     mobileNumber = self.get_response("What is you mobile number")
+        #     mobileNumberTrim = mobileNumber.replace(" ", "")
+        #     mobileNumber = mobileNumberTrim
+        #     if (str.isdigit(mobileNumberTrim) and len(mobileNumberTrim)==8):
+        #         confirm = self.get_response("Please confirm your mobile number is " + mobileNumber)
+        #         confirmLower = confirm.lower()
+        #     else:
+        #         continue
 
-            if "stop" in confirmLower:
-                return
-            elif "no" in confirmLower or "incorrect" in confirmLower or "wrong" in confirmLower:
-                continue
-            else:
-                break
+        #     if "stop" in confirmLower:
+        #         return
+        #     elif "no" in confirmLower or "incorrect" in confirmLower or "wrong" in confirmLower:
+        #         continue
+        #     else:
+        #         break
         
-        while True:
-            email = self.get_response("What is you email address")
-            emailList = email.split(" ")
-            newEmailList = ["@" if e == "at" else e for e in emailList]
-            emailTrim = ''.join(newEmailList)
-            confirm = self.get_response("Please confirm your email address is " + emailTrim)
-            confirmLower = confirm.lower()
+        # while True:
+        #     email = self.get_response("What is you email address")
+        #     emailList = email.split(" ")
+        #     newEmailList = ["@" if e == "at" else e for e in emailList]
+        #     emailTrim = ''.join(newEmailList)
+        #     confirm = self.get_response("Please confirm your email address is " + emailTrim)
+        #     confirmLower = confirm.lower()
 
-            if "stop" in confirmLower:
-                return
-            elif "no" in confirmLower or "incorrect" in confirmLower or "wrong" in confirmLower:
-                continue
-            else:
-                break
+        #     if "stop" in confirmLower:
+        #         return
+        #     elif "no" in confirmLower or "incorrect" in confirmLower or "wrong" in confirmLower:
+        #         continue
+        #     else:
+        #         break
 
-        while True:
-            postalCode = self.get_response("What is you current address 6-digit postal code?")
-            postalCodeTrim = postalCode.replace(" ", "")
-            postalCode = postalCodeTrim
-            confirm = self.get_response("Please confirm your address postal code is " + postalCode)
-            confirmLower = confirm.lower()
+        # while True:
+        #     postalCode = self.get_response("What is you current address 6-digit postal code?")
+        #     postalCodeTrim = postalCode.replace(" ", "")
+        #     postalCode = postalCodeTrim
+        #     confirm = self.get_response("Please confirm your address postal code is " + postalCode)
+        #     confirmLower = confirm.lower()
 
-            if "stop" in confirmLower:
-                return
-            elif "no" in confirmLower or "incorrect" in confirmLower or "wrong" in confirmLower:
-                continue
-            else:
-                break
+        #     if "stop" in confirmLower:
+        #         return
+        #     elif "no" in confirmLower or "incorrect" in confirmLower or "wrong" in confirmLower:
+        #         continue
+        #     else:
+        #         break
 
-        while True:
-            dob = self.get_response("What is your birthday(YYYYMMDD)?")
-            dobTrim = dob.replace(" ", "")
-            dob = dobTrim + "_"
-            if (str.isdigit(dobTrim) and len(dobTrim)==8):
-                confirm = self.get_response("Please confirm your birthday is " + dob)
-                confirmLower = confirm.lower()
-            else:
-                continue
+        # while True:
+        #     dob = self.get_response("What is your birthday(YYYYMMDD)?")
+        #     dobTrim = dob.replace(" ", "")
+        #     dob = dobTrim + "_"
+        #     if (str.isdigit(dobTrim) and len(dobTrim)==8):
+        #         confirm = self.get_response("Please confirm your birthday is " + dob)
+        #         confirmLower = confirm.lower()
+        #     else:
+        #         continue
 
-            if "stop" in confirmLower:
-                return
-            elif "no" in confirmLower or "incorrect" in confirmLower or "wrong" in confirmLower:
-                continue
-            else:
-                break
+        #     if "stop" in confirmLower:
+        #         return
+        #     elif "no" in confirmLower or "incorrect" in confirmLower or "wrong" in confirmLower:
+        #         continue
+        #     else:
+        #         break
 
-        while True:
-            facility = self.get_response("Which type of facility do you want to book (Hospital or Polyclinic)?")
-            confirm = self.get_response("Please confirm facility type you choose to book is " + facility)
-            confirmLower = confirm.lower()
+        # while True:
+        #     facility = self.get_response("Which type of facility do you want to book (Hospital or Polyclinic)?")
+        #     confirm = self.get_response("Please confirm facility type you choose to book is " + facility)
+        #     confirmLower = confirm.lower()
 
-            if "stop" in confirmLower:
-                return
-            elif "no" in confirmLower or "incorrect" in confirmLower or "wrong" in confirmLower:
-                continue
-            else:
-                break
+        #     if "stop" in confirmLower:
+        #         return
+        #     elif "no" in confirmLower or "incorrect" in confirmLower or "wrong" in confirmLower:
+        #         continue
+        #     else:
+        #         break
 
-        while True:
-            bookingDate = self.get_response("Which date do you want to book (YYYYMMDD)?")
-            bookingDateTrim = bookingDate.replace(" ", "")
-            bookingDate = bookingDateTrim
-            if (str.isdigit(bookingDateTrim) and len(bookingDateTrim)==8):
-                confirm = self.get_response("Please confirm your booking date is " + bookingDate)
-                confirmLower = confirm.lower()
-            else:
-                continue
+        # while True:
+        #     bookingDate = self.get_response("Which date do you want to book (YYYYMMDD)?")
+        #     bookingDateTrim = bookingDate.replace(" ", "")
+        #     bookingDate = bookingDateTrim
+        #     if (str.isdigit(bookingDateTrim) and len(bookingDateTrim)==8):
+        #         confirm = self.get_response("Please confirm your booking date is " + bookingDate)
+        #         confirmLower = confirm.lower()
+        #     else:
+        #         continue
 
-            if "stop" in confirmLower:
-                return
-            elif "no" in confirmLower or "incorrect" in confirmLower or "wrong" in confirmLower:
-                continue
-            else:
-                break
+        #     if "stop" in confirmLower:
+        #         return
+        #     elif "no" in confirmLower or "incorrect" in confirmLower or "wrong" in confirmLower:
+        #         continue
+        #     else:
+        #         break
 
-        while True:
-            bookingTime = self.get_response("What time do you want to book (HHMM)?")
-            confirm = self.get_response("Please confirm your booking time is " + bookingTime)
-            confirmLower = confirm.lower()
+        # while True:
+        #     bookingTime = self.get_response("What time do you want to book (HHMM)?")
+        #     confirm = self.get_response("Please confirm your booking time is " + bookingTime)
+        #     confirmLower = confirm.lower()
 
-            if "stop" in confirmLower:
-                return
-            elif "no" in confirmLower or "incorrect" in confirmLower or "wrong" in confirmLower:
-                continue
-            else:
-                break
+        #     if "stop" in confirmLower:
+        #         return
+        #     elif "no" in confirmLower or "incorrect" in confirmLower or "wrong" in confirmLower:
+        #         continue
+        #     else:
+        #         break
 
-        self.log.info("firstName:" + firstNameTrim + ",lastName:" + lastNameTrim + ", contactNumber:" + mobileNumberTrim +
-                      ", email:" + emailTrim + ", dob:" + dobTrim + ", facility:" + facility + ", bookingDate:" + bookingDateTrim)
+        # self.log.info("firstName:" + firstNameTrim + ",lastName:" + lastNameTrim + ", contactNumber:" + mobileNumberTrim +
+        #               ", email:" + emailTrim + ", dob:" + dobTrim + ", facility:" + facility + ", bookingDate:" + bookingDateTrim)
 
         url = 'http://d19acc46dcf7.ngrok.io/bookingsystem'
         myobj = {
-          "First_Name": firstNameTrim,
-          "Last_Name": lastNameTrim,
-          "Contact_No": mobileNumberTrim,
-          "Email": emailTrim,
-          "Address": postalCodeTrim,
-          "DOB": dobTrim,
+          "First_Name": 'LiJian', #firstNameTrim,
+          "Last_Name": 'Gu', #lastNameTrim,
+          "Contact_No": '91519418', # mobileNumberTrim,
+          "Email": 'gulijian@gmail.com', #emailTrim,
+          "Address": '119615', #postalCodeTrim,
+          "DOB": '19881111', #dobTrim,
           "Medical_Description" : "",
-          "Treatment_Facility" : facility,
-          "Booking_Timing": bookingTime,
-          "Booking_Date": bookingDateTrim,
+          "Treatment_Facility" : 'Hospital',#facility,
+          "Booking_Timing": '1030', #bookingTime,
+          "Booking_Date": '20210521', #bookingDateTrim,
           "Sore_Throat": "true",
           "Fever": "false"
         }
