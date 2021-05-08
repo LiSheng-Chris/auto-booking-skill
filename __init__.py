@@ -565,9 +565,8 @@ class AutoBooking(MycroftSkill):
         res = requests.post(url, json = myobj)
         self.log.info(res)
 
-        if (res.message) {
+        if res.message:
             self.speak_dialog(res.message)
-        }
 
 
 def create_skill():
