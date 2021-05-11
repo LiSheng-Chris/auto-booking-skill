@@ -557,9 +557,9 @@ class AutoBooking(MycroftSkill):
         # Create a callback on_snapshot function to capture changes
         def on_snapshot(doc_snapshot, changes, read_time):
             for doc in doc_snapshot:
-                qrcode_url = doc.to_dict()['qrCodeUrl']
-                if (qrcode_url):
-                    webbrowser.open(qrcode_url)
+                data = doc.to_dict()
+                if (data['qrCodeUrl']):
+                    webbrowser.open(data['qrCodeUrl'])
                     self.speak_dialog('Please use your Singpass app to scan the qr code to book')
                     doc_ref.set({u'qrCodeUrl': ''})
             callback_done.set()
